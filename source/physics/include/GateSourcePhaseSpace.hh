@@ -18,7 +18,11 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wpedantic"
 
+// ROOT defines ClassDef(name,id) as a macro (Rtypes.h); libtorch has a class of the same name
+#pragma push_macro("ClassDef")
+#undef ClassDef
 #include <torch/script.h>
+#pragma pop_macro("ClassDef")
 
 #pragma GCC diagnostic pop
 #endif
